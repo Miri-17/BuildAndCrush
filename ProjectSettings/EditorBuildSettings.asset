@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 9edbb554904ec4e43b091b5e1950d2c1
+  - enabled: 1
+    path: Assets/Scenes/ModeSelection.unity
+    guid: 9e6567df6f4b0f4419fa16cafe141b7e
+  - enabled: 1
+    path: Assets/Scenes/CrusherSelection.unity
+    guid: 3867232d6d6e3cf4f84be910cf1f9445
+  - enabled: 1
+    path: Assets/Scenes/SoundList.unity
+    guid: bb7a22180a2584055b2322853da76431
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 7236266b78944cc4381b5ad2e46c1536
+  - enabled: 1
+    path: Assets/Scenes/BuilderSelection.unity
+    guid: a5da011dafa7dbe44b2169d68e318d5e
+  - enabled: 1
+    path: Assets/Scenes/Opening/OpeningAE.unity
+    guid: 5b7298f34539f4a47bbc9a9c5509684a
+  - enabled: 1
+    path: Assets/Scenes/Opening/OpeningBF.unity
+    guid: 7850825edb843d745b35b689e724cdc3
+  - enabled: 1
+    path: Assets/Scenes/Opening/OpeningCG.unity
+    guid: da5dc6cd451154b8192f9eeb4d8ecebf
+  - enabled: 1
+    path: Assets/Scenes/Opening/OpeningDH.unity
+    guid: c46da5a53b92746fc83634ecbb6f7983
+  - enabled: 1
+    path: Assets/Scenes/Opening/Opening_Crossover.unity
+    guid: d157d9a274e12458dacc26ea2574215a
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: 936ae20f135252a4f9dab07e4daef625
+  - enabled: 1
+    path: Assets/Scenes/Result/Result.unity
+    guid: 779f60e31f1b144a28e9a56b6f864ccc
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingAE.unity
+    guid: df58b348dd3a7b148802675f06ae731c
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingBF.unity
+    guid: 660da0d06fdc1ca4b8ee2d99189426ed
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingCG.unity
+    guid: 5d24d11b203c3489594cea65a25105c4
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingDH.unity
+    guid: 3a7407855771a4d92b84785177c62ce1
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingEA.unity
+    guid: 77bb804cfb6ffc448991dc72e4f50197
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingFB.unity
+    guid: 7a9ac38827cc82649b48706387160058
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingGC.unity
+    guid: da76f8166275d43048ef4e5ab24b15e5
+  - enabled: 1
+    path: Assets/Scenes/Ending/EndingHD.unity
+    guid: 60551a16250ef4f19830c677d2829b59
+  - enabled: 1
+    path: Assets/Scenes/Ending/Ending_Crossover_CrusherWin.unity
+    guid: 39e03c6e047fd4340a84f04d7e02b784
+  - enabled: 1
+    path: Assets/Scenes/Ending/Ending_Crossover_BuilderWin.unity
+    guid: 451284eb679234bbb8996f13c6f87e17
+  m_configObjects: {}

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985e6a6429be0224faee785ea5fc9a3c, type: 3}
+  m_Name: CrusherDatabase
+  m_EditorClassIdentifier: 
+  crusher:
+  - crusherName: "\u8D64\u305A\u304D\u3093"
+    crusherL2D: {fileID: 5589396824034088517, guid: 84c2ae3a7156d459aac800ae8232b4e2, type: 3}
+  - crusherName: "\u30CF\u30FC\u30C8\u306E\u5973\u738B"
+    crusherL2D: {fileID: 6546010727618325890, guid: 01012bc8707bb4ea48310f3d3d2791a7, type: 3}
+  - crusherName: "\u5929\u4EBA"
+    crusherL2D: {fileID: 5471406698439525081, guid: 5d8d369e54fb54e5b9700eacd6b0c394, type: 3}
+  - crusherName: "\u304A\u83D3\u5B50\u306E\u9B54\u5973"
+    crusherL2D: {fileID: 209770074015380413, guid: 0f179984155f84e9bae4fcf0c6c700f2, type: 3}

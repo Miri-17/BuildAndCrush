@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
+  m_Name: Witch_L2D.fadeMotionList
+  m_EditorClassIdentifier: 
+  MotionInstanceIds: 1210fdffa60ffdffc6effcff9eeffcff
+  CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: d2ee69a9e551b46dcb712ad16988e2b6, type: 2}
+  - {fileID: 11400000, guid: b015dd4ff650f4aca80b68980046dd20, type: 2}
+  - {fileID: 11400000, guid: 22237a59c602746aab66abb74d47636c, type: 2}
+  - {fileID: 11400000, guid: 06a682daf331248d19792416f4cc3b0e, type: 2}
