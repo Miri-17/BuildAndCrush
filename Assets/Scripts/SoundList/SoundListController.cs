@@ -26,7 +26,13 @@ public class SoundListController : MonoBehaviour
         if (!firstPushY && Input.GetButtonDown("select"))
         {
             firstPushY = true;
+            soundAudioSource.Stop();
             soundAudioSource.PlayOneShot(soundAudioClip[soundListUIController.index]);
+        }
+
+        if (firstPushY && !soundAudioSource.isPlaying)
+        {
+            firstPushY = false;
         }
 
         if (!firstPushB && Input.GetButtonDown("Jump"))

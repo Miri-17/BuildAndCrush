@@ -278,8 +278,8 @@ MonoBehaviour:
   damage: 4
   obstaclesCrushEffect: {fileID: 8757355515571571618, guid: 4fd134bdff473e44ab5484e6410f3bd3, type: 3}
   attackRate: 0.8
+  burstRate: 0.05
   cupcake: {fileID: 2365999720552087233, guid: b123b46bd9f57f846932d585425a775e, type: 3}
-  cupcakePush: {fileID: 2365999720552087233, guid: 4cf9014e33da65f47b7fc8a9eb647211, type: 3}
   cupcakeSE: {fileID: 8300000, guid: a2a836f297196c543bc82206a16c7b85, type: 3}
 --- !u!82 &-5070596682160473044
 AudioSource:

@@ -17,6 +17,8 @@ public class GameDirector : MonoBehaviour
     public float currentFill = 0.0f;
     public bool crusherWin = true;
     public bool builderWin = true;
+    // クラッシャー4体、ビルダー4体の順. 勝ったら0が1になる.
+    public int[] achievements = new int[8]{ 0, 0, 0, 0, 0, 0, 0, 0, };
 
     private void Awake()
     {

@@ -14,10 +14,10 @@ public class ResultController : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        // audioSource.clip = audioClip[0];
         audioSource.loop = false;
-        // audioSource.Play();
         audioSource.PlayOneShot(audioClip[0]);
+
+        UpdateAchievement();
     }
 
     private void Update()
@@ -150,5 +150,36 @@ public class ResultController : MonoBehaviour
             audioSource.loop = true;
             audioSource.Play();
         }
+    }
+
+    private void UpdateAchievement()
+    {
+        // もしクラッシャーが勝っていたら
+        if (GameDirector.Instance.crusherWin)
+        {
+            // そのクラッシャーのGameDirector.Instance.achievementsが0だったら
+            if (GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] == 0)
+            {
+                // 1にする
+                GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] = 1;
+            }
+        }
+        // もしビルダーが勝っていたら
+        if (GameDirector.Instance.builderWin)
+        {
+            // そのビルダーのGameDirector.Instance.achievementsが0だったら
+            if (GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] == 0)
+            {
+                // 1にする
+                GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] = 1;
+            }
+        }
+
+        // Achievement情報をセーブする.
+        for (int i = 0; i < GameDirector.Instance.achievements.Length; i++)
+        {
+            PlayerPrefs.SetInt("achievement" + i + "_data", GameDirector.Instance.achievements[i]);
+        }
+        PlayerPrefs.Save();
     }
 }

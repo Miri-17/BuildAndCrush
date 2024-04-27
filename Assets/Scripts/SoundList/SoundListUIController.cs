@@ -71,7 +71,6 @@ public class SoundListUIController : MonoBehaviour
             }
             soundListController.firstPushY = false;
             SEaudioSource.PlayOneShot(SEaudioClip);
-            soundListController.soundAudioSource.Stop();
             selection.anchoredPosition = new Vector2(-690.0f, selectionLocation[index]);
             maskRectTransform.anchoredPosition = new Vector2(-690.0f, selectionLocation[index]);
         }
@@ -85,7 +84,6 @@ public class SoundListUIController : MonoBehaviour
             }
             soundListController.firstPushY = false;
             SEaudioSource.PlayOneShot(SEaudioClip);
-            soundListController.soundAudioSource.Stop();
             selection.anchoredPosition = new Vector2(-690.0f, selectionLocation[index]);
             maskRectTransform.anchoredPosition = new Vector2(-690.0f, selectionLocation[index]);
         }

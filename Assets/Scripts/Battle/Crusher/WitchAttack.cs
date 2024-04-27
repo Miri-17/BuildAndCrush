@@ -1,6 +1,8 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -16,6 +18,7 @@ public class WitchAttack : MonoBehaviour
     [SerializeField] private int damage = 2;
     [SerializeField] private GameObject obstaclesCrushEffect;
     [SerializeField] private float attackRate = 2.0f;
+    [SerializeField] private float burstRate = 0.2f;
     [SerializeField] private GameObject cupcake;
     // [SerializeField] private GameObject cupcakePush;
     [SerializeField] private AudioClip cupcakeSE;
@@ -32,11 +35,11 @@ public class WitchAttack : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    private async void Update()
     {
         if (Time.time >= nextAttackTime)
         {
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 float verticalKey = Input.GetAxisRaw("Vertical");
                 float horizontalKey = Input.GetAxisRaw("Horizontal");
@@ -47,11 +50,19 @@ public class WitchAttack : MonoBehaviour
                     animator.SetTrigger("attack_upwards");
                     Attack(attackPointUp);
                     Instantiate(cupcake, attackPointUp.position, attackPointUp.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
+                    Instantiate(cupcake, attackPointUp.position, attackPointUp.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
+                    Instantiate(cupcake, attackPointUp.position, attackPointUp.rotation);
                 }
                 else if (verticalKey < 0)
                 {
                     animator.SetTrigger("attack_downwards");
                     Attack(attackPointDown);
+                    Instantiate(cupcake, attackPointDown.position,attackPointDown.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
+                    Instantiate(cupcake, attackPointDown.position,attackPointDown.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
                     Instantiate(cupcake, attackPointDown.position,attackPointDown.rotation);
                     //Instantiate(cupcake, attackPointDown.transform);
                 }
@@ -59,6 +70,10 @@ public class WitchAttack : MonoBehaviour
                 {
                     animator.SetTrigger("attack");
                     Attack(attackPoint);
+                    Instantiate(cupcake, attackPoint.position,attackPoint.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
+                    Instantiate(cupcake, attackPoint.position,attackPoint.rotation);
+                    await UniTask.Delay(TimeSpan.FromSeconds(burstRate));
                     Instantiate(cupcake, attackPoint.position,attackPoint.rotation);
                     //Instantiate(cupcake, attackPoint.transform);
                 }
