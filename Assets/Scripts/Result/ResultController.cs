@@ -8,15 +8,15 @@ public class ResultController : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioClip;
 
-    private bool firstPushY = false;
     private AudioSource audioSource;
+    private bool firstPushY = false;
+    private bool isChangedAchievement = false;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = false;
         audioSource.PlayOneShot(audioClip[0]);
-
         UpdateAchievement();
     }
 
@@ -152,14 +152,18 @@ public class ResultController : MonoBehaviour
         }
     }
 
+    // Achievement情報をセーブするメソッド
     private void UpdateAchievement()
     {
+        isChangedAchievement = false;
+
         // もしクラッシャーが勝っていたら
         if (GameDirector.Instance.crusherWin)
         {
             // そのクラッシャーのGameDirector.Instance.achievementsが0だったら
             if (GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] == 0)
             {
+                isChangedAchievement = true;
                 // 1にする
                 GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] = 1;
             }
@@ -170,16 +174,21 @@ public class ResultController : MonoBehaviour
             // そのビルダーのGameDirector.Instance.achievementsが0だったら
             if (GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] == 0)
             {
+                isChangedAchievement = true;
                 // 1にする
                 GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] = 1;
             }
         }
 
-        // Achievement情報をセーブする.
-        for (int i = 0; i < GameDirector.Instance.achievements.Length; i++)
+        // 情報の変更があったら
+        if (isChangedAchievement)
         {
-            PlayerPrefs.SetInt("achievement" + i + "_data", GameDirector.Instance.achievements[i]);
+            // Achievement情報をセーブする.
+            for (int i = 0; i < GameDirector.Instance.achievements.Length; i++)
+            {
+                PlayerPrefs.SetInt("achievement" + i + "_data", GameDirector.Instance.achievements[i]);
+            }
+            PlayerPrefs.Save();
         }
-        PlayerPrefs.Save();
     }
 }

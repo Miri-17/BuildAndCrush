@@ -15,7 +15,7 @@ public class AchievementController : MonoBehaviour
         // Achievement情報をロードする.
         for (int i = 0; i < GameDirector.Instance.achievements.Length; i++)
         {
-            GameDirector.Instance.achievements[i] = PlayerPrefs.GetInt("achievement" + i + "_data");
+            GameDirector.Instance.achievements[i] = PlayerPrefs.GetInt("achievement" + i + "_data", 0);
         }
 
         // achievemetnImageを表示するか表示しないか決める.
