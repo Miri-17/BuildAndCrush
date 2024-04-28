@@ -29,6 +29,11 @@ public class RuleExplanationController : MonoBehaviour
     private Image explanationImage;
     #endregion
 
+    [SerializeField]
+    private AudioSource SEaudioSource;
+    [SerializeField]
+    private AudioClip SEaudioClip;
+
     #region
     // 0...ルール説明 / 1...クラッシャー説明 / 2...ビルダー説明
     private int explanationTitlesIndex = 0;
@@ -96,6 +101,8 @@ public class RuleExplanationController : MonoBehaviour
                         }
                     }
                 }
+
+                SEaudioSource.PlayOneShot(SEaudioClip);
                 UpdateExplanations(explanationTitlesIndex, explanationsIndex);
             }
         }
