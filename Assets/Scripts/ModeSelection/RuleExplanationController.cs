@@ -27,12 +27,11 @@ public class RuleExplanationController : MonoBehaviour
     private Button builderExplanationButton;
     [SerializeField]
     private Image explanationImage;
-    #endregion
-
     [SerializeField]
     private AudioSource SEaudioSource;
     [SerializeField]
     private AudioClip SEaudioClip;
+    #endregion
 
     #region
     // 0...ルール説明 / 1...クラッシャー説明 / 2...ビルダー説明
@@ -40,6 +39,10 @@ public class RuleExplanationController : MonoBehaviour
     private int explanationsIndex = 0;
     private float horizontalKey = 0;
     #endregion
+
+    [SerializeField]
+    private Text explanationTitleText;
+    private string[] explanationTitle = new string[3]{ "ルール説明", "クラッシャーについて", "ビルダーについて",};
 
     private void Start()
     {
@@ -70,15 +73,24 @@ public class RuleExplanationController : MonoBehaviour
 
                     if (explanationTitlesIndex == 0 && explanationsIndex >= explanations.ruleExplanation.ruleExplanationSentences0.Length)
                     {
+                        explanationTitlesIndex = 1;
                         explanationsIndex = 0;
+                        ruleExplanationButton.interactable = true;
+                        crusherExplanationButton.interactable = false;
                     }
                     else if (explanationTitlesIndex == 1 && explanationsIndex >= explanations.crusherExplanation.crusherExplanationSentences0.Length)
                     {
+                        explanationTitlesIndex = 2;
                         explanationsIndex = 0;
+                        crusherExplanationButton.interactable = true;
+                        builderExplanationButton.interactable = false;
                     }
                     else if (explanationTitlesIndex == 2 && explanationsIndex >= explanations.builderExplanation.builderExplanationSentences0.Length)
                     {
+                        explanationTitlesIndex = 0;
                         explanationsIndex = 0;
+                        builderExplanationButton.interactable = true;
+                        ruleExplanationButton.interactable = false;
                     }
                 }
                 else if (horizontalKey < 0)
@@ -89,15 +101,24 @@ public class RuleExplanationController : MonoBehaviour
                     {
                         if (explanationTitlesIndex == 0)
                         {
+                            explanationTitlesIndex = 2;
                             explanationsIndex = explanations.ruleExplanation.ruleExplanationSentences0.Length - 1;
+                            ruleExplanationButton.interactable = true;
+                            builderExplanationButton.interactable = false;
                         }
                         else if (explanationTitlesIndex == 1)
                         {
+                            explanationTitlesIndex = 0;
                             explanationsIndex = explanations.crusherExplanation.crusherExplanationSentences0.Length - 1;
+                            crusherExplanationButton.interactable = true;
+                            ruleExplanationButton.interactable = false;
                         }
                         else if (explanationTitlesIndex == 2)
                         {
+                            explanationTitlesIndex = 1;
                             explanationsIndex = explanations.builderExplanation.builderExplanationSentences0.Length - 1;
+                            builderExplanationButton.interactable = true;
+                            crusherExplanationButton.interactable = false;
                         }
                     }
                 }
@@ -116,7 +137,7 @@ public class RuleExplanationController : MonoBehaviour
             explanationText0.text = explanations.ruleExplanation.ruleExplanationSentences0[explanationsIndex];
             explanationText1.text = explanations.ruleExplanation.ruleExplanationSentences1[explanationsIndex];
             explanationText2.text = explanations.ruleExplanation.ruleExplanationSentences2[explanationsIndex]; 
-            explanationImage.sprite = explanations.ruleExplanation.ruleExplanationSprites[explanationsIndex];       
+            explanationImage.sprite = explanations.ruleExplanation.ruleExplanationSprites[explanationsIndex];
         }
         else if (explanationTitlesIndex == 1)
         {
@@ -132,6 +153,7 @@ public class RuleExplanationController : MonoBehaviour
             explanationText2.text = explanations.builderExplanation.builderExplanationSentences2[explanationsIndex];
             explanationImage.sprite = explanations.builderExplanation.builderExplanationSprites[explanationsIndex];  
         }
+        explanationTitleText.text = explanationTitle[explanationTitlesIndex];       
     }
 
     public void PushRuleExplanationButton()

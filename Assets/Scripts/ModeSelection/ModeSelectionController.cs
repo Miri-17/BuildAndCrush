@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,13 +22,16 @@ public class ModeSelectionController : MonoBehaviour
     private AudioSource SEaudioSource;
     [SerializeField]
     private AudioClip[] SEaudioClips;
+    [SerializeField]
+    private Image rulesButton;
+    [SerializeField]
+    private Sprite[] rulesButtonSprite;
     #endregion
 
     #region
     private int index = 0;
     private bool firstPushY = false;
     private bool firstPushB = false;
-    // private bool firstPushHorizontal = false;
     private float horizontalKey = 0;
     private bool firstPushL = false;
     #endregion
@@ -36,6 +40,7 @@ public class ModeSelectionController : MonoBehaviour
     {
         background.sprite = backgrounds[index];
         panel.SetActive(false);
+        rulesButton.sprite = rulesButtonSprite[0];
     }
 
     private void Update()
@@ -129,11 +134,13 @@ public class ModeSelectionController : MonoBehaviour
         {
             firstPushL = false;
             panel.SetActive(false);
+            rulesButton.sprite = rulesButtonSprite[0];
         }
         else
         {
             firstPushL = true;
             panel.SetActive(true);
+            rulesButton.sprite = rulesButtonSprite[1];
         }
     }
 }
