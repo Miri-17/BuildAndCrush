@@ -8,9 +8,12 @@ public class ResultController : MonoBehaviour
     [SerializeField]
     private AudioClip[] audioClip;
 
+    #region
     private AudioSource audioSource;
     private bool firstPushY = false;
-    private bool isChangedAchievement = false;
+    private bool isChangedCrusherAchievement = false;
+    private bool isChangedBuilderAchievement = false;
+    #endregion
 
     private void Start()
     {
@@ -155,39 +158,157 @@ public class ResultController : MonoBehaviour
     // Achievement情報をセーブするメソッド
     private void UpdateAchievement()
     {
-        isChangedAchievement = false;
+        isChangedCrusherAchievement = false;
+        isChangedBuilderAchievement = false;
 
         // もしクラッシャーが勝っていたら
         if (GameDirector.Instance.crusherWin)
         {
-            // そのクラッシャーのGameDirector.Instance.achievementsが0だったら
-            if (GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] == 0)
+            switch (GameDirector.Instance.crusherIndex)
             {
-                isChangedAchievement = true;
-                // 1にする
-                GameDirector.Instance.achievements[GameDirector.Instance.crusherIndex] = 1;
+                case 0:
+                    // そのクラッシャーのachievements配列において、ビルダーに対するindexの要素が0だったら
+                    if (GameDirector.Instance.girlAchievements[GameDirector.Instance.builderIndex] == 0)
+                    {
+                        isChangedCrusherAchievement = true;
+                        // 1にする
+                        GameDirector.Instance.girlAchievements[GameDirector.Instance.builderIndex] = 1;
+                    }
+                    break;
+                case 1:
+                    if (GameDirector.Instance.queenOfHeartsAchievements[GameDirector.Instance.builderIndex] == 0)
+                    {
+                        isChangedCrusherAchievement = true;
+                        GameDirector.Instance.queenOfHeartsAchievements[GameDirector.Instance.builderIndex] = 1;
+                    }
+                    break;
+                case 2:
+                    if (GameDirector.Instance.tenjinAchievements[GameDirector.Instance.builderIndex] == 0)
+                    {
+                        isChangedCrusherAchievement = true;
+                        GameDirector.Instance.tenjinAchievements[GameDirector.Instance.builderIndex] = 1;
+                    }
+                    break;
+                case 3:
+                    if (GameDirector.Instance.witchAchievements[GameDirector.Instance.builderIndex] == 0)
+                    {
+                        isChangedCrusherAchievement = true;
+                        GameDirector.Instance.witchAchievements[GameDirector.Instance.builderIndex] = 1;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
         // もしビルダーが勝っていたら
         if (GameDirector.Instance.builderWin)
         {
-            // そのビルダーのGameDirector.Instance.achievementsが0だったら
-            if (GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] == 0)
+            switch (GameDirector.Instance.builderIndex)
             {
-                isChangedAchievement = true;
-                // 1にする
-                GameDirector.Instance.achievements[GameDirector.Instance.builderIndex + 4] = 1;
+                case 0:
+                    // そのビルダーのachievements配列において、クラッシャーに対するindexの要素が0だったら
+                    if (GameDirector.Instance.wolfAchievements[GameDirector.Instance.crusherIndex] == 0)
+                    {
+                        isChangedBuilderAchievement = true;
+                        // 1にする
+                        GameDirector.Instance.wolfAchievements[GameDirector.Instance.crusherIndex] = 1;
+                    }
+                    break;
+                case 1:
+                    if (GameDirector.Instance.queenAliceAchievements[GameDirector.Instance.crusherIndex] == 0)
+                    {
+                        isChangedBuilderAchievement = true;
+                        GameDirector.Instance.queenAliceAchievements[GameDirector.Instance.crusherIndex] = 1;
+                    }
+                    break;
+                case 2:
+                    if (GameDirector.Instance.mikadoAchievements[GameDirector.Instance.crusherIndex] == 0)
+                    {
+                        isChangedBuilderAchievement = true;
+                        GameDirector.Instance.mikadoAchievements[GameDirector.Instance.crusherIndex] = 1;
+                    }
+                    break;
+                case 3:
+                    if (GameDirector.Instance.hanzelGretelAchievements[GameDirector.Instance.crusherIndex] == 0)
+                    {
+                        isChangedBuilderAchievement = true;
+                        GameDirector.Instance.hanzelGretelAchievements[GameDirector.Instance.crusherIndex] = 1;
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
-        // 情報の変更があったら
-        if (isChangedAchievement)
+        // クラッシャー情報の変更があったら
+        if (isChangedCrusherAchievement)
         {
-            // Achievement情報をセーブする.
-            for (int i = 0; i < GameDirector.Instance.achievements.Length; i++)
+            switch (GameDirector.Instance.crusherIndex)
             {
-                PlayerPrefs.SetInt("achievement" + i + "_data", GameDirector.Instance.achievements[i]);
+                case 0:
+                    for (int i = 0; i < GameDirector.Instance.girlAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("girlAchievement" + i + "Data", GameDirector.Instance.girlAchievements[i]);
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < GameDirector.Instance.queenOfHeartsAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("queenOfHeartsAchievement" + i + "Data", GameDirector.Instance.queenOfHeartsAchievements[i]);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < GameDirector.Instance.tenjinAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("tenjinAchievement" + i + "Data", GameDirector.Instance.tenjinAchievements[i]);
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < GameDirector.Instance.witchAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("witchAchievement" + i + "Data", GameDirector.Instance.witchAchievements[i]);
+                    }
+                    break;
+                default:
+                    break;
             }
+            // Achievement情報をセーブする.
+            PlayerPrefs.Save();
+        }
+
+        // ビルダーの情報の変更があったら
+        if (isChangedBuilderAchievement)
+        {
+            switch (GameDirector.Instance.builderIndex)
+            {
+                case 0:
+                    for (int i = 0; i < GameDirector.Instance.wolfAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("wolfAchievement" + i + "Data", GameDirector.Instance.wolfAchievements[i]);
+                    }
+                    break;
+                case 1:
+                    for (int i = 0; i < GameDirector.Instance.queenAliceAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("queenAliceAchievement" + i + "Data", GameDirector.Instance.queenAliceAchievements[i]);
+                    }
+                    break;
+                case 2:
+                    for (int i = 0; i < GameDirector.Instance.mikadoAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("mikadoAchievement" + i + "Data", GameDirector.Instance.mikadoAchievements[i]);
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < GameDirector.Instance.hanzelGretelAchievements.Length; i++)
+                    {
+                        PlayerPrefs.SetInt("hanzelGretelAchievement" + i + "Data", GameDirector.Instance.hanzelGretelAchievements[i]);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            // Achievement情報をセーブする.
             PlayerPrefs.Save();
         }
     }

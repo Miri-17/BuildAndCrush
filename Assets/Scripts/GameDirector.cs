@@ -17,8 +17,16 @@ public class GameDirector : MonoBehaviour
     public float currentFill = 0.0f;
     public bool crusherWin = true;
     public bool builderWin = true;
-    // クラッシャー4体、ビルダー4体の順. 勝ったら0が1になる.
-    public int[] achievements = new int[8]{ 0, 0, 0, 0, 0, 0, 0, 0, };
+    // ビルダー4体の順. 勝ったら0が1になる.
+    public int[] girlAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] queenOfHeartsAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] tenjinAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] witchAchievements = new int[4] { 0, 0, 0, 0, };
+    // クラッシャー4体の順. 勝ったら0が1になる.
+    public int[] wolfAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] queenAliceAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] mikadoAchievements = new int[4] { 0, 0, 0, 0, };
+    public int[] hanzelGretelAchievements = new int[4] { 0, 0, 0, 0, };
 
     private void Awake()
     {

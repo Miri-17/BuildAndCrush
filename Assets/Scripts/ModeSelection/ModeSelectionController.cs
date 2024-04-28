@@ -17,7 +17,7 @@ public class ModeSelectionController : MonoBehaviour
     [SerializeField]
     private Sprite[] backgrounds;
     [SerializeField]
-    private GameObject panel;
+    private GameObject explanationPanel;
     [SerializeField]
     private AudioSource SEaudioSource;
     [SerializeField]
@@ -39,13 +39,13 @@ public class ModeSelectionController : MonoBehaviour
     private void Start()
     {
         background.sprite = backgrounds[index];
-        panel.SetActive(false);
+        explanationPanel.SetActive(false);
         rulesButton.sprite = rulesButtonSprite[0];
     }
 
     private void Update()
     {
-        if (!panel.activeSelf)
+        if (!explanationPanel.activeSelf)
         {
             // 1フレームのうち horizontal key が押されていない時があったら
             if (firstPushHorizontal)
@@ -115,7 +115,7 @@ public class ModeSelectionController : MonoBehaviour
             if (!firstPushL && Input.GetButtonDown("Fire1"))
             {
                 firstPushL = true;
-                panel.SetActive(true);
+                explanationPanel.SetActive(true);
                 rulesButton.sprite = rulesButtonSprite[1];
             }
         }
@@ -124,7 +124,7 @@ public class ModeSelectionController : MonoBehaviour
             if (firstPushL && Input.GetButtonDown("Jump"))
             {
                 firstPushL = false;
-                panel.SetActive(false);
+                explanationPanel.SetActive(false);
                 rulesButton.sprite = rulesButtonSprite[0];
             }
         }
@@ -132,16 +132,16 @@ public class ModeSelectionController : MonoBehaviour
 
     public void PushButton()
     {
-        if (panel.activeSelf)
+        if (explanationPanel.activeSelf)
         {
             firstPushL = false;
-            panel.SetActive(false);
+            explanationPanel.SetActive(false);
             rulesButton.sprite = rulesButtonSprite[0];
         }
         else
         {
             firstPushL = true;
-            panel.SetActive(true);
+            explanationPanel.SetActive(true);
             rulesButton.sprite = rulesButtonSprite[1];
         }
     }
