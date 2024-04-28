@@ -116,6 +116,7 @@ public class ModeSelectionController : MonoBehaviour
             {
                 firstPushL = true;
                 panel.SetActive(true);
+                rulesButton.sprite = rulesButtonSprite[1];
             }
         }
         else
@@ -124,6 +125,7 @@ public class ModeSelectionController : MonoBehaviour
             {
                 firstPushL = false;
                 panel.SetActive(false);
+                rulesButton.sprite = rulesButtonSprite[0];
             }
         }
     }
